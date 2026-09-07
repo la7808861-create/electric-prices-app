@@ -1,9 +1,9 @@
-const CACHE_NAME = "electric-prices-v18";
+const CACHE_NAME = "electric-prices-v19";
 const APP_FILES = [
   "./",
   "./index.html",
-  "./styles.css",
-  "./app.js",
+  "./styles.css?v=19",
+  "./app.js?v=19",
   "./zxing.min.js",
   "./manifest.json",
   "./icon.svg"
