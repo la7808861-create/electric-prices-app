@@ -186,7 +186,7 @@ class Handler(SimpleHTTPRequestHandler):
                 "id": product_id,
                 "name": data.get("name", "").strip(),
                 "category": data.get("category", "").strip(),
-                "code": data.get("code", "").strip(),
+                "code": data.get("code", "").strip() or f"NO-BARCODE-{product_id}",
                 "aisle": data.get("aisle", ""),
                 "supplier": data.get("supplier", ""),
                 "price": float(data.get("price") or 0),
@@ -196,8 +196,8 @@ class Handler(SimpleHTTPRequestHandler):
                 "note": data.get("note", ""),
                 "image": data.get("image", ""),
             }
-            if not values["name"] or not values["code"]:
-                self.json({"error": "name and code are required"}, 400)
+            if not values["name"]:
+                self.json({"error": "name is required"}, 400)
                 return
             with connect() as conn:
                 columns = ", ".join(values.keys())

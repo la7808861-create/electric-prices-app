@@ -282,7 +282,7 @@ function productForm(product = null) {
             <strong id="barcodeLabel">${p.code || "لم يتم مسح باركود بعد"}</strong>
             <button class="btn secondary" type="button" id="scanForAdd">مسح باركود</button>
           </div>
-          <input type="hidden" name="code" id="barcodeValue" value="${p.code}" />
+          <input class="input" name="code" id="barcodeValue" value="${p.code}" placeholder="اختياري" />
         </div>
         <div class="field wide"><label>اسم المادة</label><input class="input" name="name" id="productName" required value="${p.name}" /></div>
         <div class="field"><label>القسم</label><select class="select" name="category">${state.categories.map(c => `<option ${c === p.category ? "selected" : ""}>${c}</option>`).join("")}</select></div>
@@ -640,10 +640,7 @@ function bindEvents() {
     event.preventDefault();
     const form = new FormData(event.target);
     const item = Object.fromEntries(form.entries());
-    if (!item.code) {
-      alert("امسح باركود المادة أو أدخل الكود قبل الحفظ.");
-      return;
-    }
+    item.code = String(item.code || "").trim();
     const product = {
       ...item,
       id: item.id || makeId(),
