@@ -1,4 +1,5 @@
 import json
+import os
 import sqlite3
 import uuid
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -318,6 +319,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     init_db()
-    server = ThreadingHTTPServer(("0.0.0.0", 5180), Handler)
-    print("Electric prices app is running at http://127.0.0.1:5180/")
+    port = int(os.environ.get("PORT", "5180"))
+    server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
+    print(f"Electric prices app is running at http://127.0.0.1:{port}/")
     server.serve_forever()
