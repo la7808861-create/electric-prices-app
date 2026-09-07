@@ -1,0 +1,15 @@
+{
+  "name": "دليل أسعار المجمع الكهربائي",
+  "short_name": "أسعار المجمع",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f4f2ea",
+  "theme_color": "#17211f",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
